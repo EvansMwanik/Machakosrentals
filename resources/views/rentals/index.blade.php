@@ -10,25 +10,25 @@
 
         <ul>
             @foreach($rentals as $rental)
-            {!! Html::image('img/rentals/'.$rental->image,'' ,array('class' =>'image','width'=>'150')) !!}
+            {{ Html::image('img/rentals/'.$rental->image,'' ,array('class' =>'image','width'=>'150')) }}
                 <li>
                     
-                    {!! $rental->title !!}
-                    :{!!$rental->rentaltype->title!!}--
+                    {{ $rental->title }}
+                    :{{$rental->rentaltype->title}}--
 
-                    {!! Form::open(array('url'=>'Admin/rentals/delete/{{ $rental->id }}','method' => 'Delete', 'class'=>'form-inline')) !!}
-                    {!! Form::hidden('id', $rental->id) !!}
-                    {!! Form::submit('delete') !!}
-                    {!! Form::close() !!} 
+                    {!! Form::open(array('url'=>'Admin/rentals/delete/'.'{{ $rental->id }}','method' => 'Delete', 'class'=>'form-inline')) !!}
+                    {{ Form::hidden('id', $rental->id) }}
+                    {{ Form::submit('delete') }}
+                    {{ Form::close() }} 
 
-                     {!! Form::open(array('url'=>'Admin/rentals/availability/'.$rental->id,'method' => 'put', 
-                     'class'=>'form-inline')) !!}
-                    {!! Form::hidden('id', $rental->id) !!}
-                    {!! Form::select('available',array('0'=>'Available','1'=>'Not available'),$rental->available) !!}
-                    {!! Form::submit('update') !!}
-                    {!! Form::close() !!}
+                     {{ Form::open(array('url'=>'Admin/rentals/availability/'.$rental->id,'method' => 'put', 
+                     'class'=>'form-inline')) }}
+                    {{ Form::hidden('id', $rental->id) }}
+                    {{ Form::select('available',array('0'=>'Available','1'=>'Not available'),$rental->available) }}
+                    {{ Form::submit('update') }}
+                    {{ Form::close() }}
                     <a href="/Admin/rentals/edit/{{$rental->id}}"><input type="button" value="edit" class="edit" /></a><br>
-                     {!! $rental->description !!}
+                     {{ $rental->description }}
                 </li>
 
             @endforeach
@@ -37,7 +37,7 @@
     </div>
 
     <div id="pagination">
-    {!!$rentals->render()!!}
+    {{$rentals->render()}}
     </div>
     @stop
 

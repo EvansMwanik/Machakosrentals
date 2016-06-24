@@ -14,12 +14,12 @@
 		<ul>
 			@foreach($rentaltypes as $rentaltype)
 				<li>
-					{!! $rentaltype->title !!}
-					{!! Form::open(array('url'=>'Admin/rentaltypes/id/delete', 'method' => 'delete','class'=>'form-inline')) !!}
-					{!! Form::hidden('id', $rentaltype->id) !!}
-					{!! Form::submit('Delete') !!}
-					{!! Form::close() !!} - 
-                    <a href="/Admin/rentaltypes/edit/{!! $rentaltype->id !!}"><input type="button" value="Edit" class="edit" /></a>
+					{{$rentaltype->title }}
+					{{Form::open(array('url'=>'Admin/rentaltypes/id/delete', 'method' => 'delete','class'=>'form-inline')) }}
+					{{Form::hidden('id', $rentaltype->id) }}
+					{{Form::submit('Delete') }}
+					{{Form::close() }} - 
+                    <a href="/Admin/rentaltypes/edit/{{$rentaltype->id }}"><input type="button" value="Edit" class="edit" /></a>
 				</li>
 			@endforeach
 		</ul>

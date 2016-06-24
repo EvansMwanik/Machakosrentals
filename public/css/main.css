@@ -816,7 +816,7 @@ header a:link, header a:visited {
     width: 600px;
     margin: 0 auto 30px auto;
     padding: 20px;
-    border: 1px solid #eee;
+    border: 1px solid #8fbc8f;
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -842,7 +842,7 @@ header a:link, header a:visited {
 }
 
 #admin p input, #admin p textarea {
-    border: 1px solid #eee;
+    border: 1px solid #8fbc8f;
     padding: 10px;
     border-radius: 10px;
     -moz-border-radius: 10px;

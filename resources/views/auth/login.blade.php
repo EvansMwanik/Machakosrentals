@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading"><strong>Login or click here to go<a href="/"> Back</a></strong></div>
+				<div class="panel-heading"><strong>Login or click <a href="/">here to go Back</a></strong></div>
 				<div class="panel-body">
 					<section id="signin-form">
         <h1>I have an account</h1>

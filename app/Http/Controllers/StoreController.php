@@ -18,7 +18,7 @@ class StoreController extends Controller
 {
     
   public function __construct(RentalRepo $rentals){
-        $this->middleware('auth',['except'=>'view']);
+        $this->middleware('auth',['except'=>['show','view']]);
         $this->rentals = $rentals;
     }
     /**

@@ -12,15 +12,15 @@
 
 		@include('errors._error')
 
-		{!! Form::model($estate, array('method' => 'put', 'url' => 'Admin/estates/update', 'class' => 'form')) !!}
+		{{ Form::model($estate, array('method' => 'put', 'url' => 'Admin/estates/update', 'class' => 'form')) }}
 		
 		<p>
-			{!! Form::label('title') !!}
-			{!! Form::text('title', $estate->title) !!}
+			{{ Form::label('title') }}
+			{{ Form::text('title', $estate->title) }}
 		</p>
-		{!! Form::hidden('id', $estate->id) !!}
-		{!! Form::submit('Edit Estate', array('class'=>'secondary-cart-btn')) !!}
-		{!! Form::close() !!}
+		{{ Form::hidden('id', $estate->id) }}
+		{{ Form::submit('Edit Estate', array('class'=>'secondary-cart-btn')) }}
+		{{ Form::close() }}
 	</div><!-- end admin -->
 
 @stop

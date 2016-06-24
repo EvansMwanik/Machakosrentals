@@ -4,17 +4,20 @@
 @include('errors._error')
 
 <div id="rental">
-
+@if(count($rentals)>0)
+		There are no rentals under this estate yet!!
+		@endif
 		@foreach($estates->rental as $rental)
+
 
 			<h2>Rentals under {{$estates->title}} </h2>	
 			<hr>
 
-			{!! Html::image('img/rentals/'.$rental->image, $rental->title, array('class'=>'feature', 'width'=>'350', 'height'=>'220')) !!}
+			{{ Html::image('img/rentals/'.$rental->image, $rental->title, array('class'=>'feature', 'width'=>'350', 'height'=>'220')) }}
 					<br>
 						<h3>{{$rental->title}}</h3>
 						<br>
-						<h4>{!!$rental->rentaltype->title!!} Rental</h4>
+						<h4>{{$rental->rentaltype->title}} Rental</h4>
 						<br>
 							{{$rental->description}}
 									
@@ -24,7 +27,7 @@
                 			
 
                 			<button class="cart-btn">
-                    			<span class="price">Ksh.{!! $rental->price !!}/Month</span>
+                    			<span class="price">Ksh.{{ $rental->price }}/Month</span>
                 			</button>
                 		
 						@endif

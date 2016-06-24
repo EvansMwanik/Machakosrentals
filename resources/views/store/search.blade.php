@@ -18,11 +18,11 @@
 		@foreach($rentals as $rental)
         <div class="rental">
             
-            {!! Html::image('img/rentals/'.$rental->image, $rental->title, array('class'=>'feature', 'width'=>'220', 'height'=>'128')) !!}
+            {{ Html::image('img/rentals/'.$rental->image, $rental->title, array('class'=>'feature', 'width'=>'220', 'height'=>'128')) }}
 
-            <h3>{!!Html::link('rentals/view/'.$rental->id, $rental->title)!!}</h3>
+            <h3>{{Html::link('rentals/view/'.$rental->id, $rental->title)}}</h3>
             <br>
-            <p>{!!$rental->description!!}
+            <p>{{$rental->description}}
                
               
         </div>

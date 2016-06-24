@@ -12,15 +12,15 @@
 
 		@include('errors._error')
 
-		{!! Form::model($rentaltype, array('method' => 'put', 'url' => 'Admin/rentaltypes/update', 'class' => 'form')) !!}
+		{{ Form::model($rentaltype, array('method' => 'put', 'url' => 'Admin/rentaltypes/update', 'class' => 'form')) }}
 		
 		<p>
-			{!! Form::label('title') !!}
-			{!! Form::text('title', $rentaltype->title) !!}
+			{{ Form::label('title') }}
+			{{ Form::text('title', $rentaltype->title) }}
 		</p>
-		{!! Form::hidden('id', $rentaltype->id) !!}
-		{!! Form::submit('Edit Rentaltype', array('class'=>'secondary-cart-btn')) !!}
-		{!! Form::close() !!}
+		{{ Form::hidden('id', $rentaltype->id) }}
+		{{ Form::submit('Edit Rentaltype', array('class'=>'secondary-cart-btn')) }}
+		{{ Form::close() }}
 	</div><!-- end admin -->
 
 @stop

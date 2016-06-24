@@ -8,14 +8,14 @@
 
 		<p>Here you can create new Estates.</p>
 @include('errors._error')
-		{!! Form::open(array('url'=>'Admin/estates/store', 'class'=>'form-inline')) !!}
+		{{ Form::open(array('url'=>'Admin/estates/store', 'class'=>'form-inline')) }}
 		
 		<p>
-			{!! Form::label('title') !!}
-			{!! Form::text('title') !!}
+			{{ Form::label('title') }}
+			{{ Form::text('title') }}
 		
-		{!! Form::submit('Add Estate', array('class'=>'secondary-cart-btn')) !!}
-		{!! Form::close() !!}
+		{{ Form::submit('Add Estate', array('class'=>'secondary-cart-btn')) }}
+		{{ Form::close() }}
 	</div><!-- end admin -->
 
 @stop

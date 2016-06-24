@@ -10,11 +10,11 @@
 			<h2> {{$rentaltypes->title}} Rentals</h2>	
 			<hr>
 
-			{!! Html::image('img/rentals/'.$rental->image, $rental->title, array('class'=>'feature', 'width'=>'350', 'height'=>'220')) !!}
+			{{ Html::image('img/rentals/'.$rental->image, $rental->title, array('class'=>'feature', 'width'=>'350', 'height'=>'220')) }}
 					<br>
 						<h3>{{$rental->title}}</h3>
 						<br>
-						<h4>{!!$rental->estate->title!!} Rental</h4>
+						<h4>This Rental is in {{$rental->estate->title}} </h4>
 						<br>
 							{{$rental->description}}
 									
@@ -24,7 +24,7 @@
                 			
 						@if(Auth::check())
                 			<button class="cart-btn">
-                    			<span class="price">Ksh.{!! $rental->price !!}/Month</span>
+                    			<span class="price">Ksh.{{ $rental->price }}/Month</span>
                 			</button>
                 			@if($rental->available==0)
 				<p><strong>This Rental is Available!!</p></strong>
@@ -44,7 +44,7 @@
 
 		@endforeach
 
-			{!!Html::link("/","Go back")!!}
+			{{Html::link("/","Go back")}}
 	</div><!-- end rental -->
 </section>
 @stop

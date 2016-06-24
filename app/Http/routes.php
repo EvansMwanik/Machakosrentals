@@ -66,6 +66,7 @@ Route::get('rentaltypes/view/{id}','RentaltypesController@view');
 
 //Rentals Routes
 Route::get('Admin/rentals','RentalsController@index');
+Route::get('Admin/rentals/users','RentalsController@user');
 Route::get('Admin/rentals/create','RentalsController@create');
 Route::post('Admin/rentals/store','RentalsController@store');
 Route::delete('Admin/rentals/delete/{id}','RentalsController@destroy');

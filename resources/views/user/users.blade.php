@@ -4,19 +4,18 @@
 
     <div id="admin">
 
-        <h1>My Rentals Panel</h1><hr>
+        <h1>My Rental owners</h1><hr>
 
-        <h2>Create, Edit and Delete Rentals</h2><hr>
-
-        <ul>
+               <ul>
             @foreach($rentals as $rental)
+
             {{ Html::image('img/rentals/'.$rental->image,'' ,array('class' =>'image','width'=>'150')) }}
                 <li>
-                    
+                    {{ $rental->user->firstName }}
                     {{ $rental->title }}
                     :{{$rental->rentaltype->title}}--
 
-                    {{ Form::open(array('url'=>'/Admin/rentals/delete/{{ $rental->id }}','method' => 'Delete', 'class'=>'form-inline')) }}
+                    {!! Form::open(array('url'=>'/Admin/rentals/delete/'.'{{ $rental->id}}','method' => 'Delete', 'class'=>'form-inline'))!!}
                     {{ Form::hidden('id', $rental->id) }}
                     {{ Form::submit('delete') }}
                     {{ Form::close() }} 
@@ -26,16 +25,8 @@
 
             @endforeach
         </ul>
-       <p>Add new Rental</p><a href="/Admin/rentals/create"><input type="button" value="Create Rental" class="create" /></a>
+       
     </div>
 
-    <div id="pagination">
-    {{$rentals->render()}}
-    </div>
+  
     @stop
-
-
-
-
-
-

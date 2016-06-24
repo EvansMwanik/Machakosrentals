@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Input;
 
 class RentalsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
    /**
     *The rental repository instance
     *
@@ -176,4 +179,12 @@ class RentalsController extends Controller
         return Redirect('Admin/rentals')
             ->with('message', 'Something went wrong, please try again');
     }
+    public function user(user $id,Request $request)
+    {
+        $rental=Rental::find($id);  
+         $user=User::with('rentals')->get();
+         return view('user.users',['rentals'=>$this->rentals->forUser($request->user()),])
+         ->with('users', $user);
+        
+        }
 }

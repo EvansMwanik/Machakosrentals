@@ -38,10 +38,10 @@
                      <nav class="dropdown">
                         <ul>
                             <li>
-                                <a href="#">Browse by Estates {!!HTML::image('img/down-arrow.gif', 'Browse by Estates') !!}</a>
+                                <a href="#">Browse by Estates {{HTML::image('img/down-arrow.gif', 'Browse by Estates') }}</a>
                                 <ul>
                                     @foreach($estates as $estate)
-                                        <li>{!! Html::link('estates/'.$estate->id.'/view', $estate->title) !!}
+                                        <li>{{ Html::link('estates/'.$estate->id.'/view', $estate->title)}}
                                         </li>
                                     @endforeach
                                 </ul>
@@ -50,10 +50,10 @@
                     </nav> <nav class="dropdown">
                         <ul>
                             <li>
-                                <a href="#">Browse by Rental-types {!!HTML::image('img/down-arrow.gif', 'Browse by Rental-types') !!}</a>
+                                <a href="#">Browse by Rental-types {{HTML::image('img/down-arrow.gif', 'Browse by Rental-types') }}</a>
                                 <ul>
                                     @foreach($rentaltypes as $rentaltype)
-                                        <li>{!! Html::link('rentaltypes/view/'.$rentaltype->id, $rentaltype->title) !!}
+                                        <li>{{ Html::link('rentaltypes/view/'.$rentaltype->id, $rentaltype->title)}}
                                         </li>
                                     @endforeach
                                 </ul>
@@ -62,10 +62,10 @@
                     </nav>
 
                     <div id="search-form">
-                        {!!Form::open(array('url'=>'store/search', 'method'=>'get'))!!}
-                        {!!Form::text('keyword', null, array('placeholder'=>'Search by keyword', 'class'=>'search'))!!}
-                        {!!Form::submit('Search', array('class'=>'search submit'))!!}
-                        {!!Form::close()!!}
+                        {{Form::open(array('url'=>'store/search', 'method'=>'get'))}}
+                        {{Form::text('keyword', null, array('placeholder'=>'Search by keyword', 'class'=>'search'))}}
+                        {{Form::submit('Search', array('class'=>'search submit'))}}
+                        {{Form::close()}}
                     </div><!-- end search-form -->
 
                     <div id="user-menu">
@@ -74,17 +74,18 @@
                             <nav class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href="#">{!! Html::image('img/user-icon.gif', Auth::user()->firstName) !!} {!! Auth::user()->firstName !!} {!! Html::image('img/down-arrow.gif', Auth::user()->firstName) !!}</a>
+                                        <a href="#">{{Html::image('img/user-icon.gif', Auth::user()->firstName)}} {{Auth::user()->firstName}} {{Html::image('img/down-arrow.gif', Auth::user()->firstName)}}</a>
                                         <ul>
                                             @if(Auth::user()->admin == 1)                                                
-                                                <li>{!!Html::link('Admin/estates', 'Manage Estates')!!}</li>
-                                                <li>{!!Html::link('Admin/rentaltypes', 'Manage Rentaltypes')!!}</li>
-                                                <li>{!!Html::link('Admin/rentals', 'Manage Rentals')!!}</li>
-                                            @else
-                                                <li>{!!Html::link('/', 'view Rentals')!!}</li>
-                                                <li>{!!Html::link('Admin/rentals', 'Create Rental')!!}</li>
+                                                <li>{{Html::link('Admin/estates', 'Manage Estates')}}</li>
+                                                <li>{{Html::link('Admin/rentaltypes', 'Manage Rentaltypes')}}</li>
+                                                <li>{{Html::link('Admin/rentals', 'Manage Rentals')}}</li>
+                                                <li>{{Html::link('Admin/rentals/users', 'View Rentals owners')}}</li>
+                                            @else                                                
+                                                <li>{{Html::link('Admin/rentals', 'Create Rental')}}</li>
+                                                <li>{{Html::link('/', 'view Rentals')}}</li>
                                             @endif
-                                            <li>{!!Html::link('auth/logout', 'Sign Out')!!}</li>
+                                            <li>{{Html::link('auth/logout', 'Sign Out')}}</li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -93,10 +94,10 @@
                             <nav id="signin" class="dropdown">
                                 <ul>
                                     <li>
-                                        <a href="#">{!!Html::image('img/user-icon.gif', 'Login')!!} Log In {!!Html::image('img/down-arrow.gif', 'LogIn') !!}</a>
+                                        <a href="#">{{Html::image('img/user-icon.gif', 'Login')}} Log In {{Html::image('img/down-arrow.gif', 'LogIn')}}</a>
                                         <ul>
-                                            <li>{!!Html::link('auth/login', 'Log In')!!}</li>
-                                            <li>{!!Html::link('auth/register', 'Sign Up')!!}</li>
+                                            <li>{{Html::link('auth/login', 'Log In')}}</li>
+                                            <li>{{Html::link('auth/register', 'Sign Up')}}</li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -133,8 +134,8 @@
                     <div id="my-account">
                         <h4>MY ACCOUNT</h4>
                         <ul>
-                            <li>{!!Html::link('auth/login', 'Log In')!!}</li>
-                            <li>{!!Html::link('auth/register', 'Sign Up')!!}</li>
+                            <li>{{Html::link('auth/login', 'Log In')}}</li>
+                            <li>{{Html::link('auth/register', 'Sign Up')}}</li>
                             <!--li><a href="store/cart">Shopping Cart</a></li-->
                         </ul>
                     </div><!-- end my-account -->
@@ -142,8 +143,8 @@
                     <div id="extras">
                         <h4>INFORMATION</h4>
                         <ul>
-                           <li>{!! Html::link('store/about', 'About Us') !!}</li></li>
-                            <li>{!! Html::link('store/contact', 'Contact Us') !!}</li>
+                           <li>{{ Html::link('store/about', 'About Us') }}</li></li>
+                            <li>{{ Html::link('store/contact', 'Contact Us')}}</li>
                         </ul>
                     </div><!-- end extras -->
                 </section><!-- end links -->
@@ -172,8 +173,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
         <script>window.jQuery || document.write{{ Html::script('js/vendor/jquery-1.9.1.min.js') }}</script>
-        {!! Html::script('js/plugins.js') !!}
-        {!! Html::script('js/main.js') !!}
+        {{ Html::script('js/plugins.js') }}
+        {{ Html::script('js/main.js') }}
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

@@ -26,4 +26,8 @@ class User extends Authenticatable
     
 
         protected $Policies=['vacantrentals\Rental'=>'vacantrentals\Policies\RentalPolicy',];
+        
+        public function rentals(){
+        return $this->hasMany('vacantrentals\Rental');
+    }
 }

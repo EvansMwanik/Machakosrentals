@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default">
-				<div class="panel-heading">Register or click here to go<a href="/"> Back</a></div>
+				<div class="panel-heading">Register or click <a href="/">here to go Back</a></div>
 				<section id="register-form">
 				<div class="panel-body">
 					@if (count($errors) > 0)
@@ -17,7 +17,7 @@
 							</ul>
 						</div>
 					@endif
-
+					<p>To register your Account, enter the following information below</p>
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 

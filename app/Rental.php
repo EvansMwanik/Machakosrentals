@@ -12,6 +12,9 @@ class Rental extends Model
     public function rentaltype(){
     	return $this->belongsTo('vacantrentals\Rentaltype');
     }
+    public function user(){
+    	return $this->belongsTo('vacantrentals\User');
+    }
     
     protected $fillable=array('user_id','estate_id','rentaltype_id',
     	'title','description','price','image');

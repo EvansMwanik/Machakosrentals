@@ -21,20 +21,16 @@
 			@foreach($rentals as $rental)
 			     <div class="rental">
 									
-                    <strong><a href="rentals/view/{{$rental->id}}">{!!Html::image('img/rentals/'.$rental->image, $rental->title ,array('class'=>'feature', 'width'=>'380', 'height'=>'180')) !!} <br>
-                   {{$rental->title}}</a></strong>
+                    <strong><a href="rentals/view/{{$rental->id}}">{{ Html::image('img/rentals/'.$rental->image, $rental->title ,array('class'=>'feature', 'width'=>'380', 'height'=>'180')) }}<br>
+                   {{ $rental->title }}</a></strong>
 				
-				             
-                    <h4>{!!$rental->rentaltype->title!!} Rental</h4>
-                     <h5>Located in {{$rental->estate->title}}</h5>
+                    <h4>{{ $rental->rentaltype->title }} Rental</h4>
+                     <h5>Located in {{$rental->estate->title }}</h5>
 
-                    {!!$rental->description!!}<br>
-              
-               @if(!Auth::check()) 
-                                      
-                @else
-                        <button type="submit" class="cart-btn">
-                        <span class="price">Ksh.{!! $rental->price !!} per Month</span></button>
+                    {{ $rental->description }}<br>
+                                                  
+                      <button type="submit" class="cart-btn">
+                        <span class="price">Ksh.{{ $rental->price }} per Month</span></button>
                 <br>
                 <div class="available">
                     <strong>   
@@ -50,8 +46,7 @@
                
                 </div>
                </p>
-            @endif
-            </div>
+              </div>
 			@endforeach	
 		
 		<br>
@@ -60,13 +55,13 @@
         @if(!Auth::check()) 
         <div class="button cart-btn" style="text-align:centre">
         <strong> You are not logged in, if you own or manage rentals, register to place your rentals with us</strong>
-         @endif
-	   </div>	
+         
+	   </div>
+       @endif	
 </section><!-- end rental -->
 
 <div id="pagination">
-	{!!$rentals->render()!!}
-</div>
+	{{$rentals->render()}}</div>
 @stop
 
 
