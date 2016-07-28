@@ -21,10 +21,18 @@
                     {{ Form::submit('delete') }}
                     {{ Form::close() }} 
 
-                     {{ Form::open(array('url'=>'Admin/rentals/availability/'.$rental->id,'method' => 'put', 
+                    {{ Form::open(array('url'=>'Admin/rentals/availability/'.$rental->id,'method' => 'put', 
                      'class'=>'form-inline')) }}
-                    {{ Form::hidden('id', $rental->id) }}
+                     {{ Form::hidden('id', $rental->id) }}                   
                     {{ Form::select('available',array('0'=>'Available','1'=>'Not available'),$rental->available) }}
+                    {{ Form::hidden('id', $rental->id) }}
+                    {{ Form::submit('update') }}
+                    {{ Form::close() }}                     
+                                                           
+                    {{ Form::open(array('url'=>'Admin/rentals/payment/'.$rental->id,'method' => 'put', 
+                     'class'=>'form-inline')) }}
+                    {{ Form::select('payment',array('0'=>'Not Paid','1'=>'Paid'),$rental->payment) }}
+                    {{ Form::hidden('id', $rental->id) }}
                     {{ Form::submit('update') }}
                     {{ Form::close() }}
                     <a href="/Admin/rentals/edit/{{$rental->id}}"><input type="button" value="edit" class="edit" /></a><br>

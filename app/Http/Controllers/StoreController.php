@@ -18,7 +18,7 @@ class StoreController extends Controller
 {
     
   public function __construct(RentalRepo $rentals){
-        $this->middleware('auth',['except'=>['show','view']]);
+        $this->middleware('auth',['except'=>['show','view','about']]);
         $this->rentals = $rentals;
     }
     /**
@@ -28,12 +28,7 @@ class StoreController extends Controller
      */
     public function index(Request $request, Rental $id, Estate $estate, Rentaltype $rentaltype_id)
     {
-        if (\Auth::user()->admin==0) {
-        $rental=Rental::OrderBy('available')->Paginate(6);
-        $estate=Estate::with('rental')->get();
-        return view('user.index',['rentals'=>$this->rentals->forUser($request->user()),])
-        ->with('estates', $estate);
-        } else {
+       if(\Auth::user()->admin==1){
         $rental=Rental::OrderBy('available')->Paginate(6);
         $rentaltype=Rentaltype::with('rental.rentaltype')->get();
         $estate=Estate::with('rental')->get();
@@ -41,6 +36,22 @@ class StoreController extends Controller
         ->with('rentals', $rental)
         ->with('estates', $estate)
         ->withRentaltypes($rentaltype); 
+        }
+         else if (\Auth::user()->admin==0) {
+        $rental=Rental::OrderBy('available')->Paginate(6);
+        $estate=Estate::with('rental')->get();
+        return view('user.index',['rentals'=>$this->rentals->forUser($request->user()),])
+        ->with('estates', $estate);
+        } 
+        
+        else{
+            $rental=Rental::OrderBy('available')->Paginate(6);
+        $rentaltype=Rentaltype::with('rental.rentaltype')->get();
+        $estate=Estate::with('rental')->get();
+        return view('store.index2')
+        ->with('rentals', $rental)
+        ->with('estates', $estate)
+        ->withRentaltypes($rentaltype);
         }
     }
 
@@ -69,10 +80,10 @@ class StoreController extends Controller
      */
     public function view()
     {
-        $rental=Rental::paginate(6);
+        $rental=Rental::Orderby('payment','dsec')->paginate(6);
         $estate=Estate::with('rental')->get();
         $rentaltype=Rentaltype::with('rental')->get();
-        return view('store.index')
+        return view('store.index2')
         ->with('rentals', $rental)
         ->with('estates', $estate)
         ->with('rentaltypes', $rentaltype);
@@ -117,14 +128,14 @@ class StoreController extends Controller
     public function email(contactRequest $request)
     {
         \Mail::send('store.contact',array(
-            'name'=>$request->get('name'),
+            'name'=>$request->get('Firstname'),
             'email'=>$request->get('email'),
             'user_message'=>$request->get('message')),
         function($message){
-            $message->from('compsolutionscentre@gmail.com');
-            $message->to('compsolutionscentre@gmail.com','Admin')->subject('vacantrentals feedback');
+            $message->from(\Auth::user()->email);
+            $message->to('compsolutionscentre@gmail.com','Admin')->subject('Feedback');
         });
-        return reidrect('store/contact')->with('message','Thanks for contact us!');
+        return redirect('store/contact')->with('message','Thanks for contacting us!');
     }
 
     /**

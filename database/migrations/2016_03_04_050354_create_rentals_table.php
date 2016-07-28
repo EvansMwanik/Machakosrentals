@@ -24,6 +24,7 @@ class CreateRentalsTable extends Migration
             $table->text('description');
             $table->decimal('price',8,2);
             $table->boolean('available')->default(0);
+            $table->boolean('payment')->default(0);
             $table->string('image');
             $table->timestamps();
         });

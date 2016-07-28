@@ -16,7 +16,7 @@
                     {{ $rental->title }}
                     :{{$rental->rentaltype->title}}--
 
-                    {{ Form::open(array('url'=>'/Admin/rentals/delete/{{ $rental->id }}','method' => 'Delete', 'class'=>'form-inline')) }}
+                    {!! Form::open(array('url'=>'/Admin/rentals/delete/{{ $rental->id }}','method' => 'Delete', 'class'=>'form-inline')) !!}
                     {{ Form::hidden('id', $rental->id) }}
                     {{ Form::submit('delete') }}
                     {{ Form::close() }} 

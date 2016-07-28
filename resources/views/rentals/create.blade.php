@@ -14,6 +14,7 @@
             
             {{ Form::hidden('user_id', $user_id) }}
         </p>
+        
         <p>
             {{ Form::label('estate_id', 'Select your Estate') }}
             {{ Form::select('estate_id', $estate) }}
@@ -39,7 +40,9 @@
             {{ Form::label('available', 'Available ') }}
             {{ Form::checkbox('available',0, true) }}
         </p>
-       
+       <p>
+            {{ Form::hidden('payment', 'Payment') }}
+        </p>
         <p>
             {{ Form::label('image', 'Choose an image') }}
             {{ Form::file('image') }}

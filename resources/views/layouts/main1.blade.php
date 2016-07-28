@@ -72,7 +72,7 @@
                                                 <li>{{Html::link('Admin/rentals/users', 'View Rentals owners')}}</li>
                                             @else                                                
                                                 <li>{{Html::link('Admin/rentals', 'Create Rental')}}</li>
-                                                <li>{{Html::link('/', 'view Rentals')}}</li>
+                                                <li>{{Html::link('Admin/rentals', 'view Rentals')}}</li>
                                             @endif
                                             <li>{{Html::link('auth/logout', 'Sign Out')}}</li>
                                         </ul>

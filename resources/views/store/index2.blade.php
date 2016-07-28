@@ -21,6 +21,8 @@
 			@foreach($rentals as $rental)
 			     <div class="rental">
 					
+                     @if($rental->payment==1)
+
                     <strong><a href="rentals/view/{{$rental->id}}">{{ Html::image('img/rentals/'.$rental->image, $rental->title ,array('class'=>'feature', 'width'=>'380', 'height'=>'180')) }}<br>
                    {{ $rental->title }}</a></strong>
 				
@@ -31,6 +33,7 @@
                                                   
                       <button type="submit" class="cart-btn">
                         <span class="price">Ksh.{{ $rental->price }} per Month</span></button>
+                
                 <br>
                 <div class="available">
                     <strong>   
@@ -47,6 +50,9 @@
                
                 </div>
                </p>
+            @else
+                No rentals here yet
+            @endif
               </div>
 			@endforeach	
 		
@@ -64,9 +70,3 @@
 <div id="pagination">
 	{{$rentals->render()}}</div>
 @stop
-
-
-
-
-
-

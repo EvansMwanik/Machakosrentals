@@ -22,6 +22,10 @@
             {{ Form::label('rentaltype_id', 'Select a Rental type') }}
             {{ Form::select('rentaltype_id', $rentaltype) }}
         </p>
+        <p>
+            {{ Form::label('rentaltype_id', 'Select payment') }}
+            {{ Form::select('rentaltype_id', $payment) }}
+        </p>
 		<p>
             {{ Form::label('price') }}
             {{ Form::text('price', null, array('class'=>'form-price')) }}
@@ -33,6 +37,10 @@
         <p>
             {{ Form::label('available', 'Available ') }}
             {{ Form::checkbox('available',0, true) }}
+        </p>
+        <p>
+            {{ Form::label('Payment', 'Payment ') }}
+            {{ Form::checkbox('Payment',0, true) }}
         </p>
 		<p>
 			{{ Form::label('Image') }}

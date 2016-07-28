@@ -10,6 +10,12 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+
 html,
 button,
 input,
@@ -407,10 +413,21 @@ header a:link, header a:visited {
    search-keyword
    ============================================================================ */
 
-#search-keyword {
-    padding: 30px 0 30px 30px;
+@media (min-width: 480px) {
+  #search-keyword {
+    padding: 10px 0 10px 10px;
+                }
 }
-
+@media (min-width: 768px) {
+  #search-keyword {
+    padding: 20px 0 20px 20px;
+                }
+}
+@media (min-width: 1200px) {
+  #search-keyword {
+    padding: 30px 0 30px 30px;
+                }
+}
 #search-keyword h1 {
     font-size: 22px;
     font-weight: normal;
@@ -813,7 +830,7 @@ header a:link, header a:visited {
    ============================================================================ */
 
 #admin {
-    width: 600px;
+    width: 800px;
     margin: 0 auto 30px auto;
     padding: 20px;
     border: 1px solid #8fbc8f;
@@ -938,119 +955,38 @@ input[type=button].edit {
 }
 
 /* ============================================================================
-   order-details & order-history & personal-details & shopping-cart
+   about-us
    ============================================================================ */
 
-#order-details,
-#order-history,
-#personal-details {
-    text-align: left;
-    width: 900px;
-    float: right;
-    margin-bottom: 60px;
-    padding-left: 20px;
-}
-
-#order-history {
-    margin-bottom: 0;
-}
-
-/* ---- IE7 Margin Fix ---- */
-.lt-ie8 #order-details,
-.lt-ie8 #order-history,
-.lt-ie8 #personal-details {
-    margin-top: -120px;
-}
-
-#order-details h1, #order-details h2,
-#order-history h1, #shopping-cart h1 {
-    color: #2e373f;
-    font-weight: normal;
-    margin-bottom: 20px;
-    width: 840px;
-}
-
-#order-details h1,
-#order-history h1,
-#shopping-cart h1 {
-    font-size: 24px;
-}
-
-#order-details h2 {
-    font-size: 16px;
-    background-color: #f6f6f6;
-    padding: 15px;
-}
-
-#order-details p {
-    color: #5f5e5e;
-    margin-left: 50px;
-}
-
-#order-details table,
-#order-history table,
-#shopping-cart table {
-    color: #5f5e5e;
-    width: 870px;
-    /*margin-bottom: 40px*/;
-}
-
-#shopping-cart table {
-    width: 1080px;
-}
-
-
-
-#order-details th,
-#order-history th,
-#shopping-cart th {
+#aboutus {
+    width: relative;
+    margin: 0 auto 20px auto;
     padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    color: #2e373f;
 }
 
-#order-details td,
-#order-history td,
-#shopping-cart td {
-    padding: 10px;
+#aboutus h1 {
+    font-size: 28px;
+    font-weight: normal;
+    margin-bottom: 10px;
 }
 
-#shopping-cart .qty {
-    border: 1px solid #aaa;
-    padding: 5px 10px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    width: 20px;
+#aboutus p span {
+    font-weight: bold;
 }
 
-#shopping-cart td span {
-    display: block;
-}
-
-#order-history a:link, #order-history a:visited {
+#aboutus a:link, #aboutus a:visited {
     color: #5daad0;
     text-decoration: none;
 }
 
-.total {
-    text-align: right;
+.note {
+    font-size: 12px;
 }
-
-.total span {
-    font-weight: bold;
-}
-
-.finalized {
-    color: #9dbb6f;
-}
-
-.pending {
-    color: #ed7840;
-}
-
-.aborted {
-    color: #de310f;
-}
-
 /* ============================================================================
    Footer
    ============================================================================ */
@@ -1468,4 +1404,5 @@ button.cart-btn {
     }
 }
 
-#ui-datepicker-div { font-size:12px; }
+#ui-datepicker-div { font-size:12px; 
+}

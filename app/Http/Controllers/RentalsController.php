@@ -12,6 +12,7 @@ use vacantrentals\Rental;
 use vacantrentals\Repositories\RentalRepo;
 use vacantrentals\Rentaltype;
 use vacantrentals\Availability\Availability;
+use vacantrentals\Availability\Payment;
 use Image;
 use vacantrentals\User;
 use File;
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Input;
 
 class RentalsController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth');
-    }
+    
    /**
     *The rental repository instance
     *
@@ -45,12 +44,23 @@ class RentalsController extends Controller
            $estate=Estate::with('rental')->get();
         return view('user.index',['rentals'=>$this->rentals->forUser($request->user()),])
         ->with('estates', $estate);
-        } else {
+        } 
+
+        else if(\Auth::user()->admin==1)  {
         $rental=Rental::paginate(6);
         $estate=Estate::with('rental')->get();
         return view('rentals.index')
         ->with('rentals', $rental)
         ->with('estates', $estate); 
+        }
+        
+        else{
+        $rental=Rental::paginate(6);
+        $estate=Estate::with('rental')->get();
+        return view('rentals.index2')
+        ->with('rentals', $rental)
+        ->with('estates', $estate); 
+
         }
     }
 
@@ -83,7 +93,7 @@ class RentalsController extends Controller
     {
            $image=Input::file('image');       
             $filename = time()."-".$image->getClientOriginalName();
-            $path= public_path('img\rentals/'.$filename);
+            $path= public_path('img/rentals/'.$filename);
             Image::make($image->getRealPath())->resize(468,249)->save($path);
 
             $rental=new Rental(array(
@@ -93,6 +103,7 @@ class RentalsController extends Controller
             'title'=>$request->get('title'),
             'description'=>$request->get('description'),
             'price'=>$request->get('price'),
+            'payment'=>$request->get('payment'),
             'available'=>$request->get('available'),            
             ));
 
@@ -119,8 +130,10 @@ class RentalsController extends Controller
         else{
         $rental = Rental::findorFail($id);
         $rentaltype=\DB::table('rentaltypes')->lists('title','id');
+        $payment=\DB::table('rentals')->lists('payment','id');
         return view('rentals.edit')
         ->with('rental',$rental)
+        ->with('payment',$payment)
         ->with('rentaltype', $rentaltype);
         }
 
@@ -179,12 +192,17 @@ class RentalsController extends Controller
         return Redirect('Admin/rentals')
             ->with('message', 'Something went wrong, please try again');
     }
-    public function user(user $id,Request $request)
+    public function payment($id)
     {
-        $rental=Rental::find($id);  
-         $user=User::with('rentals')->get();
-         return view('user.users',['rentals'=>$this->rentals->forUser($request->user()),])
-         ->with('users', $user);
-        
+      $rental = Rental::find(Input::get('id'));
+       if ($rental) {
+            $rental->payment=Input::get('payment');
+            $rental->save();
+            return Redirect('Admin/rentals')
+                ->with('message', 'Rental  updated');
         }
+
+        return Redirect('Admin/rentals')
+            ->with('message', 'Something went wrong, please try again');
+    }
 }

@@ -33,7 +33,7 @@ Route::get('auth/logout','Auth\AuthController@getLogout');
 //Registration routes
 Route::get('auth/register','Auth\AuthController@getRegister');
 Route::post('auth/register','Auth\AuthController@PostRegister');
-Route::controllers(['password'=>'Auth\passwordController']);
+Route::controllers(['password'=>'Auth\PasswordController']);
 
 //navigation routes
 Route::get('/', 'StoreController@view');
@@ -73,4 +73,5 @@ Route::delete('Admin/rentals/delete/{id}','RentalsController@destroy');
 Route::get('Admin/rentals/edit/{id}','RentalsController@edit');
 Route::put('Admin/rentals/update','RentalsController@update');
 Route::put('Admin/rentals/availability/{id}','RentalsController@availability');
+Route::put('Admin/rentals/payment/{id}','RentalsController@payment');
 });

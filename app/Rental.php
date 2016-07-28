@@ -17,6 +17,6 @@ class Rental extends Model
     }
     
     protected $fillable=array('user_id','estate_id','rentaltype_id',
-    	'title','description','price','image');
+    	'title','description','price','payment','image');
     public $table='rentals';
 }
